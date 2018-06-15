@@ -1,0 +1,32 @@
+{
+  "name": "utils-attribute-uuid",
+  "version": "0.0.0",
+  "description": "A Node.js utility to convert an Artifact Attribute Name to a UUID",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RallyTechServices/utils-attribute-uuid.git"
+  },
+  "keywords": [
+    "Agile",
+    "Central",
+    "Technical",
+    "Services",
+    "webhook",
+    "uuid"
+  ],
+  "author": "Tyr Johanson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RallyTechServices/utils-attribute-uuid/issues"
+  },
+  "homepage": "https://github.com/RallyTechServices/utils-attribute-uuid#readme",
+  "dependencies": {
+    "request": "^2.87.0",
+    "request-promise-native": "^1.0.5"
+  }
+}
