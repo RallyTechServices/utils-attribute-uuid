@@ -1,5 +1,5 @@
 {
-  "name": "utils-attribute-uuid",
+  "name": "@agile-central-technical-services/utils-attribute-uuid",
   "version": "0.0.1",
   "description": "A Node.js utility to convert an Artifact Attribute Name to a UUID",
   "main": "index.js",
