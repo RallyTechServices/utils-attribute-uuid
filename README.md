@@ -14,7 +14,8 @@ var attributes = ['My First Custom Attribute', 'My Second Custom Attribute'];
 
 attributes.forEach((attribute) => {
   return uuidUtils.attributeNameToUUID(
-      process.env.WORKSPACE_UUID,
+      apiKey,         // Use your Agile Central API Key
+      workspaceUUID,  // Use a value specific to your workspace
       'PortfolioItem',
       attribute.name)
     .then((uuid) => {

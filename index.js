@@ -1,6 +1,6 @@
 var request = require("request-promise-native");
 
-function getWorkspaceOidFromUUID(workspaceUUID) {
+function getWorkspaceOidFromUUID(apiKey, workspaceUUID) {
     var options = {
         "method": "GET",
         "url": 'https://rally1.rallydev.com/slm/webservice/v2.0/workspace',
@@ -10,7 +10,7 @@ function getWorkspaceOidFromUUID(workspaceUUID) {
         },
         "headers": {
             "content-type": "application/json",
-            "cookie": `ZSESSIONID=${process.env.WEBHOOK_RALLY_API_KEY}`
+            "cookie": `ZSESSIONID=${apiKey}`
         },
         "json": true
     };
@@ -20,7 +20,7 @@ function getWorkspaceOidFromUUID(workspaceUUID) {
     });
 }
 
-function getTypeDefinition(workspaceOid, type) {
+function getTypeDefinition(apiKey, workspaceOid, type) {
     var options = {
         "method": "GET",
         "url": 'https://rally1.rallydev.com/slm/webservice/v2.0/typedefinition',
@@ -30,7 +30,7 @@ function getTypeDefinition(workspaceOid, type) {
         },
         "headers": {
             "content-type": "application/json",
-            "cookie": `ZSESSIONID=${process.env.WEBHOOK_RALLY_API_KEY}`
+            "cookie": `ZSESSIONID=${apiKey}`
         },
         "json": true
     };
@@ -40,7 +40,7 @@ function getTypeDefinition(workspaceOid, type) {
     });
 }
 
-function getElementNameUUIDFromTypeDef(typeDef, name) {
+function getElementNameUUIDFromTypeDef(apiKey, typeDef, name) {
     var options = {
         "method": "GET",
         "url": typeDef + '/Attributes',
@@ -50,7 +50,7 @@ function getElementNameUUIDFromTypeDef(typeDef, name) {
         },
         "headers": {
             "content-type": "application/json",
-            "cookie": `ZSESSIONID=${process.env.WEBHOOK_RALLY_API_KEY}`
+            "cookie": `ZSESSIONID=${apiKey}`
         },
         "json": true
     };
@@ -59,13 +59,13 @@ function getElementNameUUIDFromTypeDef(typeDef, name) {
     });
 }
 
-function attributeNameToUUID(workspaceUUID, typeName, attributeName) {
-    return getWorkspaceOidFromUUID(workspaceUUID)
+function attributeNameToUUID(apiKey, workspaceUUID, typeName, attributeName) {
+    return getWorkspaceOidFromUUID(apiKey, workspaceUUID)
         .then(workspaceOid => {
-            return getTypeDefinition(workspaceOid, typeName)
+            return getTypeDefinition(apiKey, workspaceOid, typeName)
         })
         .then((typeDef) => {
-            return getElementNameUUIDFromTypeDef(typeDef, attributeName);
+            return getElementNameUUIDFromTypeDef(apiKey, typeDef, attributeName);
         });
 }
 
